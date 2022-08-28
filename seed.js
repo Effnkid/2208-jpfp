@@ -1,0 +1,122 @@
+const { db } = require('./server/db');
+
+const { Student, Campus } = require('./server/db');
+
+const campuses = [
+	{
+		name: 'Brooklyn College',
+		description:
+			'Brooklyn College is a public university in Brooklyn, New York. It is part of the City University of New York system and enrolls about 15,000 undergraduate and 2,800 graduate students on a 35-acre campus',
+		address: '2900 Bedford Ave, Brooklyn, NY 11210',
+		imageUrl:
+			'https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Brooklyn_College_Seal.svg/1280px-Brooklyn_College_Seal.svg.png',
+	},
+	{
+		name: 'New York City College of Technology',
+		description:
+			"The New York City College of Technology is a public college in New York City. Founded in 1946, it is the City University of New York's college of technology.",
+		address: '300 Jay St, Brooklyn, NY 11201',
+		imageUrl: 'https://upload.wikimedia.org/wikipedia/en/3/30/City_Tech.png',
+	},
+	{
+		name: 'Hunter College',
+		description:
+			'Hunter College is a public university in New York City. It is one of the constituent colleges of the City University of New York and offers studies in more than one hundred undergraduate and postgraduate fields across five schools. It also administers Hunter College High School and Hunter College Elementary School',
+		address: '695 Park Ave, New York, NY 10065',
+		imageUrl:
+			'https://upload.wikimedia.org/wikipedia/en/thumb/d/da/Hunter_College_logo.svg/1200px-Hunter_College_logo.svg.png',
+	},
+	{
+		name: 'Long Island University Brooklyn',
+		description:
+			'LIU Brooklyn is a private university in Brooklyn, New York. It is the original unit and first of two main campuses of the private Long Island University system.',
+		address: '1 University Plaza, Brooklyn, NY 11201',
+		imageUrl:
+			'https://upload.wikimedia.org/wikipedia/commons/4/47/LIU-Brooklyn-logo.jpg',
+	},
+	{
+		name: 'Queens College',
+		description:
+			'Queens College is a public college in the Queens borough of New York City. It is part of the City University of New York system. Its 80-acre campus is primarily located in Flushing, Queens. It has a student body representing more than 170 countries.',
+		address: '65-30 Kissena Blvd, Queens, NY 11367',
+		imageUrl: 'https://qcpages.qc.cuny.edu/BioCore/files/QClogo.jpg',
+	},
+];
+
+const students = [
+	{
+		firstName: 'Levar',
+		lastName: 'B',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+	{
+		firstName: 'John',
+		lastName: 'dota',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+	{
+		firstName: 'Malik',
+		lastName: 'Miller',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+	{
+		firstName: 'Brandon',
+		lastName: 'Stock',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+	{
+		firstName: 'Joe',
+		lastName: 'Hopper',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+	{
+		firstName: 'Mike',
+		lastName: 'Dill',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+	{
+		firstName: 'Steven',
+		lastName: 'Hunter',
+		email: this.firstName + this.lastName + '@gmail.com',
+		imageUrl: 'https://picsum.photos/200/300?random=2',
+		gpa: 2.0,
+	},
+];
+
+const seed = async () => {
+	try {
+		await db.sync({ force: true });
+
+		await Promise.all(
+			campuses.map((campus) => {
+				return Campus.create(campus);
+			})
+		);
+		await Promise.all(
+			students.map((student) => {
+				return Student.create(student);
+			})
+		);
+
+		console.log('Seeding success!');
+		db.close();
+	} catch (err) {
+		console.error('Oh noes! Something went wrong!');
+		console.error(err);
+		db.close();
+	}
+};
+
+seed();

@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+	font-family: arial, sans-serif;
+}
+nav {
+	align-items: center;
+	background-color: #645d5d;
+	color: #c0c0c0;
+	display: flex;
+	height: 80px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+}
