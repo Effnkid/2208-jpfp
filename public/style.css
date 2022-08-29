@@ -25,12 +25,32 @@ img {
 
 .campus {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	justify-content: space-evenly;
 	padding: 10px;
 	margin: 10px;
+}
+.campuses {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.campuses-form {
+	border: 2px solid black;
+	padding: 10px;
+	align-self: flex-start;
+	position: sticky;
+	top: 10px;
+}
+.campuses-form form {
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-around;
 }
 .campus-container {
 }

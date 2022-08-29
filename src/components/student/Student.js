@@ -16,17 +16,17 @@ export default function Student() {
 			<h1>
 				Students<span>({student.length})</span>
 			</h1>
-			{student.map((s) => (
-				<div className="student-container" key={s.id}>
-					<Link to={`/students/${s.id}`}>
-						<img src={s.imageUrl} alt="" />
+			{student.map((ele) => (
+				<div className="student-container" key={ele.id}>
+					<Link to={`/students/${eleid}`}>
+						<img src={ele.imageUrl} alt="" />
 					</Link>
 					<p>
-						<strong>{s.fullName}</strong> <small> attends </small>
-						{s.campus.name}
+						<strong>{ele.fullName}</strong> <small> attends </small>
+						{ele.campus.name}
 					</p>
 					<details>
-						<summary>details about {s.firstName}</summary>
+						<summary>details about {ele.firstName}</summary>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
 						quisquam accusamus libero magni porro, dolores natus nemo corporis
 						autem quae eaque enim facere aliquam. Ipsum quae in culpa quisquam

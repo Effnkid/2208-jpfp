@@ -14,10 +14,8 @@ export default function CampusPage() {
 	}, [dispatch]);
 
 	const campus = useSelector((state) => state.campusPage);
-	if (!campus.students) {
-		return <h1>LOADING</h1>;
-	}
-	return (
+
+	return campus.students ? (
 		<div className="campus-container-page">
 			<p>
 				<strong>{campus.name}</strong> <span>(# enrollments)</span>
@@ -35,5 +33,5 @@ export default function CampusPage() {
 				</ul>
 			</details>
 		</div>
-	);
+	) : null;
 }
