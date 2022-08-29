@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setStudentPage } from '../../store/redux/student/studentPageReducer';
+import { Link } from 'react-router-dom';
 
 export default function StudentPage() {
 	const dispatch = useDispatch();
@@ -12,19 +13,30 @@ export default function StudentPage() {
 	}, [dispatch]);
 
 	const student = useSelector((state) => state.studentPage);
-	console.log(student.campus);
-	return (
-		<h1>hello</h1>
-		// <div className="student-container-page">
-		// 	<img src={student.imageUrl} alt="" />
-		// 	<p>
-		// 		<strong>{student.fullName}</strong>
-		// 	</p>
-		// 	<details>
-		// 		<summary>details about {student.firstName} </summary>
-		// 		Attends:{`student.campus.name`}
-		// 		GPA: {student.gpa}
-		// 	</details>
-		// </div>
-	);
+
+	if (!student.campus) {
+		return <h1>LOADING</h1>;
+	} else {
+		return (
+			<div className="student-container-page">
+				<img src={student.imageUrl} alt="" />
+				<p>
+					<strong>{student.fullName}</strong>
+				</p>
+				<details>
+					<summary>details about {student.firstName} </summary>
+					<p>
+						Attends:
+						{
+							<Link to={`/campuses/${student.campus.id}`}>
+								{student.campus.name}
+							</Link>
+						}
+					</p>
+					<p>GPA: {student.gpa}</p>
+					<p>Email:{student.email}</p>
+				</details>
+			</div>
+		);
+	}
 }

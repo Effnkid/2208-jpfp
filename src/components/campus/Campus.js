@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCampus } from '../../store/redux/campus/campusReducer';
+import { Link } from 'react-router-dom';
 
 export default function Campus() {
 	const dispatch = useDispatch();
@@ -17,11 +18,12 @@ export default function Campus() {
 			</h1>
 			{campuses.map((c) => (
 				<div className="campus-container" key={c.id}>
-					<a href={`/campuses/${c.id}`}>
+					<Link to={`/campuses/${c.id}`}>
 						<img src={c.imageUrl} alt="campus's image" />
-					</a>
+					</Link>
 					<p>
-						<strong>{c.name}</strong> <span>(# enrollments)</span>
+						<strong>{c.name}</strong>{' '}
+						<span>({c.students.length} enrollments)</span>
 					</p>
 					<details>
 						<summary>

@@ -11,6 +11,7 @@ export const setCampusPage = (id) => {
 		dispatch(_setCampusPage(data));
 	};
 };
+
 const initialState = [];
 
 export default (state = initialState, { type, campus }) => {

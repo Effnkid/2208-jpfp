@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setStudents } from '../../store/redux/student/studentReducer';
+import { Link } from 'react-router-dom';
 
 export default function Student() {
 	const dispatch = useDispatch();
-	const student = useSelector((state) => state.student);
 
 	React.useEffect(() => {
 		dispatch(setStudents());
 	}, [dispatch]);
 
+	const student = useSelector((state) => state.student);
 	return (
 		<div className="student">
 			<h1>
@@ -17,15 +18,15 @@ export default function Student() {
 			</h1>
 			{student.map((s) => (
 				<div className="student-container" key={s.id}>
-					<a href={`/students/${s.id}`}>
+					<Link to={`/students/${s.id}`}>
 						<img src={s.imageUrl} alt="" />
-					</a>
+					</Link>
 					<p>
 						<strong>{s.fullName}</strong> <small> attends </small>
-						Brooklyn College
+						{s.campus.name}
 					</p>
 					<details>
-						<summary>details about John</summary>
+						<summary>details about {s.firstName}</summary>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
 						quisquam accusamus libero magni porro, dolores natus nemo corporis
 						autem quae eaque enim facere aliquam. Ipsum quae in culpa quisquam
