@@ -53,6 +53,11 @@ img {
 	justify-content: space-around;
 }
 .campus-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+
+	width: 33%;
 }
 .campus-container-page {
 	display: flex;
@@ -63,14 +68,32 @@ img {
 }
 .student {
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	justify-content: space-evenly;
 	padding: 10px;
 	margin: 10px;
-	flex-grow: 1;
+}
+.students {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.students-form {
+	border: 2px solid black;
+	padding: 10px;
+	align-self: flex-start;
+	position: sticky;
+	top: 10px;
+}
+.students-form form {
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-around;
 }
 .student-container {
 	display: flex;

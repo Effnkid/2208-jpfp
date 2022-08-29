@@ -28,7 +28,9 @@ const Student = db.define('student', {
 	},
 	imageUrl: {
 		type: Sequelize.STRING,
-		defaultValue: 'student.jpg',
+		defaultValue: `https://picsum.photos/200/300?random=${Math.floor(
+			Math.random() * (99 - 1 + 1) + 1
+		)}`,
 	},
 	gpa: {
 		type: Sequelize.DECIMAL,

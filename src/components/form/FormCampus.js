@@ -38,7 +38,7 @@ export default function FormCampus() {
 				onChange={handleChange('address')}
 				placeholder={'Address'}
 			/>
-			<button type="submit">Create</button>
+			<button type="submit"> Create </button>
 		</form>
 	);
 }
