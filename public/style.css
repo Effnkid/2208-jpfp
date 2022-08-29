@@ -1,6 +1,7 @@
 * {
 	box-sizing: border-box;
 	font-family: arial, sans-serif;
+	margin: 0;
 }
 nav {
 	align-items: center;
@@ -16,4 +17,27 @@ nav {
 nav a {
 	text-decoration: none;
 	color: black;
+}
+img {
+	width: 100px;
+	height: 100px;
+}
+
+.campus {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 10px;
+	margin: 10px;
+}
+.student {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	margin: 10px;
 }
