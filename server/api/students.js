@@ -18,6 +18,21 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+// Delete /api/students
+router.delete('/', async (req, res, next) => {
+	try {
+		const student = await Student.findByPk(req.body.student.id);
+		if (!student) {
+			res.sendStatus(404);
+		} else {
+			await student.destroy();
+			res.send(student);
+		}
+	} catch (e) {
+		next(e);
+	}
+});
+
 // GET /api/students/:studentId
 router.get('/:studentId', async (req, res, next) => {
 	try {

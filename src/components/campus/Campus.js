@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCampuses } from '../../store/redux/campus/campusReducer';
+import {
+	setCampuses,
+	deleteCampus,
+} from '../../store/redux/campus/campusReducer';
 import { Link } from 'react-router-dom';
 
 import FormCampus from '../form/FormCampus';
@@ -13,6 +16,10 @@ export default function Campus() {
 		dispatch(setCampuses());
 	}, [dispatch]);
 
+	const handleDelete = (campus) => {
+		dispatch(deleteCampus(campus));
+	};
+
 	return (
 		<div className="campus">
 			<div className="campuses">
@@ -24,8 +31,9 @@ export default function Campus() {
 						<Link to={`/campuses/${ele.id}`}>
 							<img src={ele.imageUrl} alt="campus's image" />
 						</Link>
+						<button onClick={() => handleDelete(ele)}> X </button>
 						<p>
-							<strong>{ele.name}</strong>{' '}
+							<strong> {ele.name} </strong>
 							{ele.students ? (
 								<span>( {ele.students.length} enrollments )</span>
 							) : (

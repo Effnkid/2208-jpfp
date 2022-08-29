@@ -18,6 +18,21 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+// Delete /api/campuses
+router.delete('/', async (req, res, next) => {
+	try {
+		const campus = await Campus.findByPk(req.body.campus.id);
+		if (!campus) {
+			res.sendStatus(404);
+		} else {
+			await campus.destroy();
+			res.send(campus);
+		}
+	} catch (e) {
+		next(e);
+	}
+});
+
 // GET /api/campuses/:campusId
 router.get('/:campusId', async (req, res, next) => {
 	try {

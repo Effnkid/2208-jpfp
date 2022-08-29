@@ -26,8 +26,8 @@ export default function CampusPage() {
 				<p>Description:{campus.description}</p>
 				<ul>
 					{campus.students.map((ele) => (
-						<Link to={`/students/${ele.id}`}>
-							<li key={ele.id}>{ele.fullName}</li>
+						<Link to={`/students/${ele.id}`} key={ele.id}>
+							<li>{ele.fullName}</li>
 						</Link>
 					))}
 				</ul>

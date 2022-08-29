@@ -1,7 +1,17 @@
 * {
 	box-sizing: border-box;
-	font-family: arial, sans-serif;
 	margin: 0;
+}
+
+body {
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+p {
+	color: #252525;
+	line-height: 1.5em;
 }
 nav {
 	align-items: center;
@@ -16,7 +26,8 @@ nav {
 
 nav a {
 	text-decoration: none;
-	color: black;
+	font-size: large;
+	color: white;
 }
 img {
 	width: 100px;
@@ -56,9 +67,13 @@ img {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-
-	width: 33%;
+	width: 50%;
+	flex-grow: 1;
 }
+.campus-container button {
+	align-self: end;
+}
+
 .campus-container-page {
 	display: flex;
 	flex-direction: column;
@@ -101,6 +116,9 @@ img {
 	flex-direction: column;
 
 	width: 33%;
+}
+.student-container button {
+	align-self: end;
 }
 .student-container-page {
 }

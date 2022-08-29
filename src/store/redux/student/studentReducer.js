@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const SET_STUDENTS = 'SET_STUDENTS';
 const CREATE_STUDENT = 'CREATE_STUDENT';
+const DELETE_STUDENT = 'DELETE_STUDENT';
 
 const _setStudents = (students) => {
 	return { type: SET_STUDENTS, students };
@@ -9,6 +10,10 @@ const _setStudents = (students) => {
 
 const _createStudent = (student) => {
 	return { type: CREATE_STUDENT, student };
+};
+
+const _deleteStudent = (student) => {
+	return { type: DELETE_STUDENT, student };
 };
 
 export const setStudents = () => {
@@ -25,6 +30,15 @@ export const createStudent = (student) => {
 	};
 };
 
+export const deleteStudent = (student) => {
+	return async (dispatch) => {
+		const { data: deleted } = await axios.delete('/api/students', {
+			data: { student },
+		});
+		dispatch(_deleteStudent(deleted));
+	};
+};
+
 const initialState = [];
 
 export default (state = initialState, { type, students, student }) => {
@@ -33,6 +47,8 @@ export default (state = initialState, { type, students, student }) => {
 			return students;
 		case CREATE_STUDENT:
 			return [...state, student];
+		case DELETE_STUDENT:
+			return state.filter((ele) => ele.id !== student.id);
 		default:
 			return state;
 	}
