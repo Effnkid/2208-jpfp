@@ -46,4 +46,21 @@ router.get('/:campusId', async (req, res, next) => {
 	}
 });
 
+// PUT /api/campuses/:campusId
+router.put('/:campusId', async (req, res, next) => {
+	try {
+		const updateCampus = await Campus.findByPk(req.params.campusId, {
+			include: { model: Student },
+		});
+
+		if (!updateCampus) {
+			res.sendStatus(404);
+		} else {
+			updateCampus.update(req.body);
+		}
+	} catch (e) {
+		next(e);
+	}
+});
+
 module.exports = router;

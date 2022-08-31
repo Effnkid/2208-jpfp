@@ -1,5 +1,5 @@
 import React from 'react';
-import { createCampus } from '../../store/redux/campus/campusReducer';
+import { createCampus } from '../../../store/redux/campus/campusReducer';
 import { useDispatch } from 'react-redux';
 
 export default function FormCampus() {
@@ -16,7 +16,7 @@ export default function FormCampus() {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(campusForm);
+
 		dispatch(createCampus(campusForm));
 		setCampusForm({ name: '', address: '' });
 	};

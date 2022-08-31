@@ -6,7 +6,7 @@ import {
 } from '../../store/redux/campus/campusReducer';
 import { Link } from 'react-router-dom';
 
-import FormCampus from '../form/FormCampus';
+import FormCampus from '../form/campus/FormCampus';
 
 export default function Campus() {
 	const dispatch = useDispatch();
@@ -28,9 +28,7 @@ export default function Campus() {
 				</h1>
 				{campuses.map((ele) => (
 					<div className="campus-container" key={ele.id}>
-						<Link to={`/campuses/${ele.id}`}>
-							<img src={ele.imageUrl} alt="campus's image" />
-						</Link>
+						<img src={ele.imageUrl} alt="campus's image" />
 						<button onClick={() => handleDelete(ele)}> X </button>
 						<p>
 							<strong> {ele.name} </strong>
@@ -40,15 +38,11 @@ export default function Campus() {
 								<span>( 0 enrollments )</span>
 							)}
 						</p>
-						<details>
-							<summary>
-								details about <strong>{ele.name}</strong>
-							</summary>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-							quisquam accusamus libero magni porro, dolores natus nemo corporis
-							autem quae eaque enim facere aliquam. Ipsum quae in culpa quisquam
-							eveniet?
-						</details>
+						<Link to={`/campuses/${ele.id}`}>
+							<p>
+								<small>Details about {ele.name}</small>
+							</p>
+						</Link>
 					</div>
 				))}
 			</div>

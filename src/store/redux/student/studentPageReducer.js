@@ -12,7 +12,7 @@ export const setStudentPage = (id) => {
 		dispatch(_setStudentPage(data));
 	};
 };
-const initialState = [];
+const initialState = {};
 
 export default (state = initialState, { type, student }) => {
 	switch (type) {

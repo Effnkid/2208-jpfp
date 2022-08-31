@@ -6,7 +6,7 @@ import {
 } from '../../store/redux/student/studentReducer';
 import { Link } from 'react-router-dom';
 
-import FormStudent from '../form/FormStudent';
+import FormStudent from '../form/student/FormStudent';
 
 export default function Student() {
 	const dispatch = useDispatch();
@@ -28,21 +28,17 @@ export default function Student() {
 				</h1>
 				{student.map((ele) => (
 					<div className="student-container" key={ele.id}>
-						<Link to={`/students/${ele.id}`}>
-							<img src={ele.imageUrl} alt="" />
-						</Link>
+						<img src={ele.imageUrl} alt="student's image" />
 						<button onClick={() => handleDelete(ele)}> X </button>
 						<p>
-							<strong>{ele.fullName}</strong> <small> attends </small>
+							<strong>{ele.firstName}</strong> <small> attends </small>
 							{ele.campus ? ele.campus.name : 'undecided'}
 						</p>
-						<details>
-							<summary>details about {ele.firstName}</summary>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-							quisquam accusamus libero magni porro, dolores natus nemo corporis
-							autem quae eaque enim facere aliquam. Ipsum quae in culpa quisquam
-							eveniet?
-						</details>
+						<Link to={`/students/${ele.id}`}>
+							<p>
+								<small>Details about {ele.firstName}</small>
+							</p>
+						</Link>
 					</div>
 				))}
 			</div>

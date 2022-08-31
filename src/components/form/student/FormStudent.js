@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStudent } from '../../store/redux/student/studentReducer';
+import { createStudent } from '../../../store/redux/student/studentReducer';
 import { useDispatch } from 'react-redux';
 
 export default function FormStudent() {

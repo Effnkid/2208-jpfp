@@ -14,25 +14,24 @@ export default function StudentPage() {
 
 	const student = useSelector((state) => state.studentPage);
 
-	return student.campus ? (
+	return (
 		<div className="student-container-page">
-			<img src={student.imageUrl} alt="" />
+			<img src={student.imageUrl} alt="student's image" />
+			<h1>{student.fullName}</h1>
+
+			<p> Details about {student.firstName} </p>
 			<p>
-				<strong>{student.fullName}</strong>
+				Attends:
+				{!student.campus ? (
+					' Not Registered '
+				) : (
+					<Link to={`/campuses/${student.campus.id}`}>
+						{student.campus.name}
+					</Link>
+				)}
 			</p>
-			<details>
-				<summary>details about {student.firstName} </summary>
-				<p>
-					Attends:
-					{
-						<Link to={`/campuses/${student.campus.id}`}>
-							{student.campus.name}
-						</Link>
-					}
-				</p>
-				<p>GPA: {student.gpa}</p>
-				<p>Email:{student.email}</p>
-			</details>
+			<p> GPA : {student.gpa}</p>
+			<p> Email : {student.email}</p>
 		</div>
-	) : null;
+	);
 }
