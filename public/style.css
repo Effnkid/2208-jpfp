@@ -78,6 +78,7 @@ img {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin: 20px;
 }
 .campus-container-page form {
 	display: flex;
@@ -125,5 +126,19 @@ img {
 .student-container button {
 	align-self: end;
 }
-/* .student-container-page {
-} */
+.student-container-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 20px;
+}
+
+#form-student-page {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem 5rem;
+}
+#single-edit {
+	align-self: end;
+}

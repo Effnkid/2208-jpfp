@@ -1,37 +1,55 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { setStudentPage } from '../../store/redux/student/studentPageReducer';
-import { Link } from 'react-router-dom';
-
+import FormStudentPage from '../form/student/FormStudentPage';
+import { setStudentEdit } from '../../store/redux/student/studentPageReducer';
 export default function StudentPage() {
 	const dispatch = useDispatch();
 	const params = useParams();
 
 	React.useEffect(() => {
-		dispatch(setStudentPage(parseInt(params.studentId)));
-	}, [dispatch]);
+		dispatch(setStudentPage(params.studentId));
+	}, []);
 
 	const student = useSelector((state) => state.studentPage);
 
+	const handleStudentEdit = () => {
+		dispatch(setStudentEdit());
+	};
 	return (
 		<div className="student-container-page">
-			<img src={student.imageUrl} alt="student's image" />
-			<h1>{student.fullName}</h1>
+			{student.edit ? (
+				<FormStudentPage student={student} />
+			) : (
+				<>
+					<header>
+						<img src={student.imageUrl} alt="student's image" />
+						<h1>{student.fullName}</h1>
+					</header>
+					<section>
+						<p> Details about {student.firstName} </p>
+						<p>
+							Attends:
+							{!student.campus ? (
+								' Not Registered '
+							) : (
+								<Link to={`/campuses/${student.campus.id}`}>
+									{student.campus.name}
+								</Link>
+							)}
+						</p>
+						<p> GPA : {student.gpa}</p>
+						<p> Email : {student.email}</p>
+					</section>
+				</>
+			)}
 
-			<p> Details about {student.firstName} </p>
-			<p>
-				Attends:
-				{!student.campus ? (
-					' Not Registered '
-				) : (
-					<Link to={`/campuses/${student.campus.id}`}>
-						{student.campus.name}
-					</Link>
-				)}
-			</p>
-			<p> GPA : {student.gpa}</p>
-			<p> Email : {student.email}</p>
+			<div id="single-edit">
+				<button hidden={student.edit} onClick={handleStudentEdit}>
+					{student.edit ? 'Update' : 'Edit'}
+				</button>
+			</div>
 		</div>
 	);
 }

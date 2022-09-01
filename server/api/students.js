@@ -49,14 +49,23 @@ router.get('/:studentId', async (req, res, next) => {
 // PUT /api/students/:studentId
 router.put('/:studentId', async (req, res, next) => {
 	try {
-		const updateStudent = Student.findByPk(req.params.studentId, {
-			include: { model: Campus },
-		});
+		if (!Object.keys(req.body)) {
+			const unregisterStudent = await Student.update(
+				{ campusId: null },
+				{ where: { id: req.params.studentId } }
+			);
 
-		if (!updateStudent) {
-			res.sendStatus(404);
+			res.send(unregisterStudent);
 		} else {
-			updateStudent.update(req.body);
+			const updateStudent = await Student.findByPk(req.params.studentId, {
+				include: { model: Campus },
+			});
+
+			if (!updateStudent) {
+				res.sendStatus(404);
+			} else {
+				res.send(await updateStudent.update(req.body));
+			}
 		}
 	} catch (e) {
 		next(e);

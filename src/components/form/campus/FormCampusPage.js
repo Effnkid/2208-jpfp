@@ -1,35 +1,37 @@
 import React from 'react';
-import { updateCampusPage } from '../../../store/redux/campus/campusPageReducer';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+	updateCampusPage,
+	setCampusEdit,
+} from '../../../store/redux/campus/campusPageReducer';
+import { useDispatch } from 'react-redux';
 
 export default function FormCampusPage(props) {
-	console.log(props);
-	const [campusFormPage, setCampusFormPage] = React.useState({
-		name: props.campus.name,
-		address: '',
-		description: '',
-	});
-
 	const dispatch = useDispatch();
+	const [campusFormPage, setCampusFormPage] = React.useState({});
 
-	React.useEffect(() => {}, [handleSubmit]);
+	React.useEffect(() => {
+		setCampusFormPage({
+			name: props.campus.name,
+			address: props.campus.address,
+			description: props.campus.description,
+		});
+	}, [props]);
 
-	const handleChange = (props) => (event) => {
+	const handleChange = (prop) => (event) => {
 		setCampusFormPage({
 			...campusFormPage,
-			[props]: event.target.value,
+			[prop]: event.target.value,
 		});
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
-		dispatch(updateCampusPage(campusForm));
-		setCampusFormPage({ name: '', address: '' });
+		dispatch(updateCampusPage(props.campus.id, campusFormPage));
+		dispatch(setCampusEdit());
 	};
 	return (
 		<form id="form-campus-page" onSubmit={handleSubmit}>
 			<label htmlFor="name"> NAME </label>
-			<input
+			<textarea
 				name="name"
 				type="text"
 				value={campusFormPage.name}
@@ -37,14 +39,14 @@ export default function FormCampusPage(props) {
 				placeholder={'Name'}
 			/>
 			<label htmlFor="address"> ADDRESS </label>
-			<input
+			<textarea
 				name="address"
 				type="text"
 				value={campusFormPage.address}
 				onChange={handleChange('address')}
 				placeholder={'Address'}
 			/>
-			<label htmlFor="description"> ADDRESS </label>
+			<label htmlFor="description"> DESCRIPTION </label>
 			<textarea
 				name="description"
 				type="text"

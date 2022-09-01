@@ -20,7 +20,6 @@ export default function FormStudent() {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
 		dispatch(createStudent(studentForm));
 		setStudentForm({ firstName: '', lastName: '', email: '' });
 	};

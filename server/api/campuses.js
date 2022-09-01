@@ -56,7 +56,7 @@ router.put('/:campusId', async (req, res, next) => {
 		if (!updateCampus) {
 			res.sendStatus(404);
 		} else {
-			updateCampus.update(req.body);
+			res.send(await updateCampus.update(req.body));
 		}
 	} catch (e) {
 		next(e);
