@@ -28,17 +28,21 @@ export default function Student() {
 				</h1>
 				{student.map((ele) => (
 					<div className="student-container" key={ele.id}>
-						<img src={ele.imageUrl} alt="student's image" />
-						<button onClick={() => handleDelete(ele)}> X </button>
-						<p>
-							<strong>{ele.firstName}</strong> <small> attends </small>
-							{ele.campus ? ele.campus.name : 'undecided'}
-						</p>
-						<Link to={`/students/${ele.id}`}>
+						<div className="student-container-image">
+							<img src={ele.imageUrl} alt="student's image" />
+						</div>
+						<div className="student-container-info">
 							<p>
-								<small>Details about {ele.firstName}</small>
+								<strong>{ele.firstName}</strong> <small> attends </small>
+								{ele.campus ? ele.campus.name : 'undecided'}
 							</p>
-						</Link>
+							<Link to={`/students/${ele.id}`}>
+								<p>
+									<small>Details about {ele.firstName}</small>
+								</p>
+							</Link>
+							<button onClick={() => handleDelete(ele)}> Remove Student</button>
+						</div>
 					</div>
 				))}
 			</div>

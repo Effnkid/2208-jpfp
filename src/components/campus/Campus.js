@@ -28,21 +28,25 @@ export default function Campus() {
 				</h1>
 				{campuses.map((ele) => (
 					<div className="campus-container" key={ele.id}>
-						<img src={ele.imageUrl} alt="campus's image" />
-						<button onClick={() => handleDelete(ele)}> X </button>
-						<p>
-							<strong> {ele.name} </strong>
-							{ele.students ? (
-								<span>( {ele.students.length} enrollments )</span>
-							) : (
-								<span>( 0 enrollments )</span>
-							)}
-						</p>
-						<Link to={`/campuses/${ele.id}`}>
+						<div className="student-container-image">
+							<img src={ele.imageUrl} alt="campus's image" />
+						</div>
+						<div className="student-container-info">
 							<p>
-								<small>Details about {ele.name}</small>
+								<strong> {ele.name} </strong>
+								{ele.students ? (
+									<span>( {ele.students.length} enrollments )</span>
+								) : (
+									<span>( 0 enrollments )</span>
+								)}
 							</p>
-						</Link>
+							<Link to={`/campuses/${ele.id}`}>
+								<p>
+									<small>Details about {ele.name}</small>
+								</p>
+							</Link>
+							<button onClick={() => handleDelete(ele)}> Remove Campus </button>
+						</div>
 					</div>
 				))}
 			</div>

@@ -5,9 +5,10 @@
 
 body {
 	margin: 0;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: cursive, Helvetica, Arial, sans-serif;
 	display: flex;
 	flex-direction: column;
+	background-color: #86bbd8;
 }
 p {
 	color: #252525;
@@ -15,7 +16,7 @@ p {
 }
 nav {
 	align-items: center;
-	background-color: #645d5d;
+	background-color: #416d88;
 	color: #c0c0c0;
 	display: flex;
 	height: 80px;
@@ -47,6 +48,42 @@ img {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	flex: 1;
+	margin: 2rem;
+}
+.campus-container {
+	display: flex;
+	width: 75%;
+	gap: 20px;
+}
+.campus-container-image img {
+	border-radius: 1rem;
+}
+.campus-container-info {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+	font-weight: 900;
+}
+.student-container-info button {
+	width: 150px;
+	height: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	margin: 10px;
+	text-align: center;
+	background: linear-gradient(
+		90deg,
+		rgba(195, 131, 116, 1) 49%,
+		rgba(252, 91, 69, 1) 100%
+	);
+}
+.campus-container-info button:hover {
+	background-image: linear-gradient(#eb3941, #f15e64, #e14e53, #e2373f);
 }
 .campuses-form {
 	border: 2px solid black;
@@ -63,16 +100,27 @@ img {
 	align-items: center;
 	justify-content: space-around;
 }
-.campus-container {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	width: 50%;
-	flex-grow: 1;
+.campuses-form button {
+	width: 150px;
+	height: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	margin: 10px;
+	text-align: center;
+
+	background: linear-gradient(
+		90deg,
+		rgba(158, 195, 161, 1) 100%,
+		rgba(252, 91, 69, 1) 100%
+	);
 }
-.campus-container button {
-	align-self: end;
+.campuses-form button:hover {
+	background: linear-gradient(#0ba360, #3cba92, #30dd8a, #2bb673);
 }
+
 .campus-container-page {
 	display: flex;
 	justify-content: center;
@@ -100,7 +148,44 @@ img {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	flex: 1;
+	margin: 2rem;
 }
+.student-container {
+	display: flex;
+	width: 75%;
+	gap: 20px;
+}
+.student-container-image img {
+	border-radius: 1rem;
+}
+.student-container-info {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+	font-weight: 900;
+}
+.student-container-info button {
+	width: 150px;
+	height: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	margin: 10px;
+	text-align: center;
+	background: linear-gradient(
+		90deg,
+		rgba(195, 131, 116, 1) 49%,
+		rgba(252, 91, 69, 1) 100%
+	);
+}
+.student-container-info button:hover {
+	background-image: linear-gradient(#eb3941, #f15e64, #e14e53, #e2373f);
+}
+
 .students-form {
 	border: 2px solid black;
 	padding: 10px;
@@ -116,16 +201,27 @@ img {
 	align-items: center;
 	justify-content: space-around;
 }
-.student-container {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
+.students-form button {
+	width: 150px;
+	height: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	border: none;
+	border-radius: 1rem;
+	margin: 10px;
+	text-align: center;
 
-	width: 33%;
+	background: linear-gradient(
+		90deg,
+		rgba(158, 195, 161, 1) 100%,
+		rgba(252, 91, 69, 1) 100%
+	);
 }
-.student-container button {
-	align-self: end;
+.students-form button:hover {
+	background: linear-gradient(#0ba360, #3cba92, #30dd8a, #2bb673);
 }
+
 .student-container-page {
 	display: flex;
 	justify-content: center;
