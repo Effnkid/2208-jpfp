@@ -10,6 +10,7 @@ import FormStudent from '../form/student/FormStudent';
 
 export default function Student() {
 	const dispatch = useDispatch();
+	const student = useSelector((state) => state.student);
 
 	React.useEffect(() => {
 		dispatch(setStudents());
@@ -19,13 +20,19 @@ export default function Student() {
 		dispatch(deleteStudent(student));
 	};
 
-	const student = useSelector((state) => state.student);
-	return (
+	return !student ? (
+		<h1> LOADING... </h1>
+	) : (
 		<div className="student">
 			<div className="students">
-				<h1>
-					Students<span>({student.length})</span>
-				</h1>
+				<header>
+					<h1>
+						<u>
+							Students<span>({student.length})</span>
+						</u>
+					</h1>
+				</header>
+
 				{student.map((ele) => (
 					<div className="student-container" key={ele.id}>
 						<div className="student-container-image">

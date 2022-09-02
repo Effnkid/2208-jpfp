@@ -28,7 +28,6 @@ export default function StudentPage() {
 						<h1>{student.fullName}</h1>
 					</header>
 					<section>
-						<p> Details about {student.firstName} </p>
 						<p>
 							Attends:
 							{!student.campus ? (

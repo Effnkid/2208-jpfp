@@ -30,6 +30,8 @@ export default function FormCampus() {
 				value={campusForm.name}
 				onChange={handleChange('name')}
 				placeholder={'Name'}
+				required
+				minLength="7"
 			/>
 
 			<input
@@ -37,6 +39,8 @@ export default function FormCampus() {
 				value={campusForm.address}
 				onChange={handleChange('address')}
 				placeholder={'Address'}
+				required
+				minLength="7"
 			/>
 			<button type="submit"> Create </button>
 		</form>

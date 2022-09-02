@@ -34,6 +34,20 @@ img {
 	width: 100px;
 	height: 100px;
 }
+input,
+textarea {
+	box-sizing: border-box;
+	width: 100%;
+	font-family: monospace;
+	padding: 0.25em 0.5em;
+}
+
+input:invalid {
+	border: 1.5px solid red;
+}
+header {
+	margin-bottom: 5rem;
+}
 
 .campus {
 	display: flex;

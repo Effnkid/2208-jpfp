@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from './components/nav';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
+import NotFound from './components/notFound';
 import Student from './components/student/Student';
 import StudentPage from './components/student/StudentPage';
 import Campus from './components/campus/Campus';
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/students/:studentId" element={<StudentPage />} />
 				<Route path="/campuses" element={<Campus />} />
 				<Route path="/campuses/:campusId" element={<CampusPage />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</div>
 	);

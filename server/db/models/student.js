@@ -5,10 +5,40 @@ const Student = db.define('student', {
 	firstName: {
 		type: Sequelize.STRING,
 		allowNull: false,
+		validate: {
+			notNull: true,
+			notEmpty: true,
+		},
+		get() {
+			const caseName = this.getDataValue('firstName');
+			return caseName
+				? caseName
+						.replace(/\s+/g, ' ')
+						.trim()
+						.split(' ')
+						.map((ele) => ele[0].toUpperCase() + ele.slice(1))
+						.join(' ')
+				: null;
+		},
 	},
 	lastName: {
 		type: Sequelize.STRING,
 		allowNull: false,
+		validate: {
+			notNull: true,
+			notEmpty: true,
+		},
+		get() {
+			const caseName = this.getDataValue('lastName');
+			return caseName
+				? caseName
+						.replace(/\s+/g, ' ')
+						.trim()
+						.split(' ')
+						.map((ele) => ele[0].toUpperCase() + ele.slice(1))
+						.join(' ')
+				: null;
+		},
 	},
 	fullName: {
 		type: Sequelize.VIRTUAL,
@@ -24,6 +54,7 @@ const Student = db.define('student', {
 		allowNull: false,
 		validate: {
 			isEmail: true,
+			notEmpty: true,
 		},
 	},
 	imageUrl: {

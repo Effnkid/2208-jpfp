@@ -4,9 +4,8 @@
 const db = require('./database');
 const Student = require('./models/student');
 const Campus = require('./models/campus');
-// const seed = require('../../seed');
-//associations
 
+//associations
 Student.belongsTo(Campus);
 Campus.hasMany(Student);
 

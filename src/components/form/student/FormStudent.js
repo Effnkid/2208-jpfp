@@ -33,6 +33,8 @@ export default function FormStudent() {
 				value={studentForm.firstName}
 				onChange={handleChange('firstName')}
 				placeholder={'firstName'}
+				required
+				minLength="7"
 			/>
 
 			<input
@@ -40,12 +42,16 @@ export default function FormStudent() {
 				value={studentForm.lastName}
 				onChange={handleChange('lastName')}
 				placeholder={'lastName'}
+				required
+				minLength="7"
 			/>
 			<input
 				type="text"
 				value={studentForm.email}
 				onChange={handleChange('email')}
 				placeholder={'email'}
+				required
+				minLength="7"
 			/>
 			<button type="submit"> Create </button>
 		</form>

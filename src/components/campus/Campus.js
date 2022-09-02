@@ -20,7 +20,9 @@ export default function Campus() {
 		dispatch(deleteCampus(campus));
 	};
 
-	return (
+	return !campuses ? (
+		<h1>LOADING... </h1>
+	) : (
 		<div className="campus">
 			<div className="campuses">
 				<h1>

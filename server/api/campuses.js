@@ -9,6 +9,7 @@ router.get('/', async (req, res, next) => {
 		next(e);
 	}
 });
+
 // POST /api/campuses
 router.post('/', async (req, res, next) => {
 	try {

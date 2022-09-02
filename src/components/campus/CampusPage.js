@@ -36,29 +36,33 @@ export default function CampusPage() {
 						<img src={campus.imageUrl} />
 						<h1> {campus.name}</h1>
 					</header>
-					<h3> Details about {campus.name}</h3>
+					<section>
+						<p> Address: {campus.address}</p>
 
-					<p> Enrollees: </p>
-					<ul>
-						{campus.students ? (
-							campus.students.map((ele) => (
-								<li key={ele.id}>
-									<Link to={`/students/${ele.id}`}>
-										<span id="list-campus-enrollees">{ele.fullName}</span>
-									</Link>
-									<span>
-										<button
-											onClick={() => handleUnregister(ele.id, params.campusId)}
-										>
-											Unregister
-										</button>
-									</span>
-								</li>
-							))
-						) : (
-							<li> `No Students` </li>
-						)}
-					</ul>
+						<ul>
+							<u>Enrollees:</u>
+							{campus.students ? (
+								campus.students.map((ele) => (
+									<li key={ele.id}>
+										<Link to={`/students/${ele.id}`}>
+											<span id="list-campus-enrollees">{ele.fullName}</span>
+										</Link>
+										<span>
+											<button
+												onClick={() =>
+													handleUnregister(ele.id, params.campusId)
+												}
+											>
+												Unregister
+											</button>
+										</span>
+									</li>
+								))
+							) : (
+								<li> `No Students` </li>
+							)}
+						</ul>
+					</section>
 				</>
 			)}
 			<div id="single-edit">
