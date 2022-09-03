@@ -30,10 +30,10 @@ export default function Campus() {
 				</h1>
 				{campuses.map((ele) => (
 					<div className="campus-container" key={ele.id}>
-						<div className="student-container-image">
+						<div className="campus-container-image">
 							<img src={ele.imageUrl} alt="campus's image" />
 						</div>
-						<div className="student-container-info">
+						<div className="campus-container-info">
 							<p>
 								<strong> {ele.name} </strong>
 								{ele.students ? (
