@@ -50,7 +50,7 @@ router.get('/:studentId', async (req, res, next) => {
 // PUT /api/students/:studentId
 router.put('/:studentId', async (req, res, next) => {
 	try {
-		if (!Object.keys(req.body)) {
+		if (Object.keys(req.body).length < 1) {
 			const unregisterStudent = await Student.update(
 				{ campusId: null },
 				{ where: { id: req.params.studentId } }
